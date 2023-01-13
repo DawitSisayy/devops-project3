@@ -126,7 +126,7 @@ jobs:
           keys: [frontend-build]
       # Your job code here
       - run:
-          name: Test frontend
+          name: run frontend tests
           command: |
              cd frontend
              npm install
@@ -149,7 +149,7 @@ jobs:
           keys: [backend-build]
       # Your job code here
       - run:
-          name: Test backend
+          name: run backend tests
           command: |
              cd backend
              npm install
