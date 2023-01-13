@@ -131,11 +131,11 @@ jobs:
              cd frontend
              npm install
              npm run test
-      - slack/notify:
-          branch_pattern: master
-          channel: C04CPS646NP
-          event: fail
-          template: basic_fail_1
+      # - slack/notify:
+      #     branch_pattern: master
+      #     channel: C04CPS646NP
+      #     event: fail
+      #     template: basic_fail_1
                 
   test-backend:
     docker:
@@ -154,11 +154,11 @@ jobs:
              cd backend
              npm install
              npm run test
-      - slack/notify:
-          branch_pattern: master
-          channel: C04CPS646NP
-          event: fail
-          template: basic_fail_1
+      # - slack/notify:
+      #     branch_pattern: master
+      #     channel: C04CPS646NP
+      #     event: fail
+      #     template: basic_fail_1
             
   scan-frontend:
     docker:
@@ -176,17 +176,17 @@ jobs:
           command: |
              cd frontend
              npm install
-             npm audit fix --force
-             npm audit fix
-             npm install --save-dev html-webpack-plugin@5.5.0
-             npm update js-yaml --depth 4
-             npm audit fix --audit-level=critical --force
+             #  npm audit fix --force
+              #  npm audit fix
+              #  npm install --save-dev html-webpack-plugin@5.5.0
+              #  npm update js-yaml --depth 4
+              #  npm audit fix --audit-level=critical --force
              npm audit --audit-level=critical
-      - slack/notify:
-          branch_pattern: master
-          channel: C04CPS646NP
-          event: fail
-          template: basic_fail_1
+      # - slack/notify:
+      #     branch_pattern: master
+      #     channel: C04CPS646NP
+      #     event: fail
+      #     template: basic_fail_1
 
   scan-backend:
     docker:
@@ -204,9 +204,9 @@ jobs:
           command: |
              cd backend
              npm install
-             npm audit fix --audit-level=critical --force
-             npm audit fix --force
-             npm update path-parse --depth 3
+              #  npm audit fix --audit-level=critical --force
+              #  npm audit fix --force
+              #  npm update path-parse --depth 3
              npm audit --audit-level=critical
       - save_cache:
           paths: [backend/node_modules]
