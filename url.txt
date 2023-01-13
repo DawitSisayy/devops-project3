@@ -1,5 +1,5 @@
 [URL01]
-https://github.com/DawitSisayy/CiCd-project3
+https://github.com/DawitSisayy/devops-project3
 
 [URL02]
 http://udapeople-9005774.s3-website-us-east-1.amazonaws.com
