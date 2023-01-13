@@ -172,7 +172,7 @@ jobs:
           keys: [frontend-build]
       # Your job code here
       - run:
-          name: Scan frontend
+          name: Scan frontend dependencies
           command: |
               cd frontend
               npm install
@@ -208,18 +208,19 @@ jobs:
           keys: [backend-build]
       # Your job code here
       - run:
-          name: Scan backend
+          name: Scan backend dependencies
           command: |
              cd backend
               npm install
-              npm update
-              npm audit fix --audit-level=critical --force
+              # npm update
+              # npm audit fix --audit-level=critical --force
+              npm audit --audit-level=critical
              #  cd backend
              #  npm install
               #  npm audit fix --audit-level=critical --force
               #  npm audit fix --force
               #  npm update path-parse --depth 3
-             #  npm audit --audit-level=critical
+             
       - save_cache:
           paths: [backend/node_modules]
           key: scan-backend
