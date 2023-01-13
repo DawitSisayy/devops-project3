@@ -19,7 +19,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl -k "https://kvdb.io/KH8JdFAC6NBaw4ghXV7NEm/migration_<< parameters.workflow_id >>")
+            SUCCESS=$(curl -k "https://kvdb.io/ AT3xy9f6NQtnCnX71LkYSW/migration_<< parameters.workflow_id >>")
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -338,7 +338,7 @@ jobs:
             if [[ 'has been executed successfully.' =~ $(grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt | uniq) ]]
             then
                 # If you are using kvdb.io, generate the bucket ID "9GE4jRtKznmVKRfvdBABBe" in your local terminal first
-                curl -k https://kvdb.io/KH8JdFAC6NBaw4ghXV7NEm/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl -k https://kvdb.io/AT3xy9f6NQtnCnX71LkYSW/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       # Here's where you will add some code to rollback on failure
       - revert-migrations
