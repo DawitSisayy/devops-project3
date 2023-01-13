@@ -466,7 +466,7 @@ jobs:
           name: Frontend smoke test.
           command: |
             # your code here
-            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com"            
+            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.${}.amazonaws.com"            
             echo ${URL} 
             if curl -s ${URL} | grep "Welcome"
             then
@@ -592,8 +592,8 @@ workflows:
           requires: [run-migrations]
       - deploy-backend:
           requires: [run-migrations]
-      # - smoke-test:
-      #     requires: [deploy-backend, deploy-frontend]
+      - smoke-test:
+          requires: [deploy-backend, deploy-frontend]
 #       - cloudfront-update:
 #           requires: [smoke-test]
 #       - cleanup:
