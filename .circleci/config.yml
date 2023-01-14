@@ -518,7 +518,7 @@ jobs:
       # Checkout code from git
       - checkout
       - run:
-          name: Get old stack workflow id and remove old stacks and bucket contents
+          name: Get old stack workflow id and remove old stacks and files
           command: |
             # Fetch the Old workflow ID
             export OldWorkflowID=$(aws cloudformation \
@@ -534,19 +534,6 @@ jobs:
             echo Stack names: "${STACKS[@]}"
             echo $OldWorkflowID ${CIRCLE_WORKFLOW_ID:0:7}
 
-            # for (( index=0; index<${#STACKS[@]}; index+=2 )) 
-            # do
-            #   if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${STACKS[index]##*-}" ]]
-            #   then
-            #       # your code here
-            #       echo "----------Deletes cofirmed------------"
-            #       aws s3 rm "s3://udapeople-${STACKS[index]##*-}" --recursive
-            #       aws cloudformation delete-stack --stack-name "${STACKS[index]}"
-            #       aws cloudformation delete-stack --stack-name "${STACKS[((++index))]}"
-            #   else
-            #       echo "----------Cannot cleanup------------"
-            #   fi
-            # done
             for i in "${STACKSID[@]}"
             do
               if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "$i" ]]
@@ -592,7 +579,7 @@ workflows:
           requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
           requires: [smoke-test]
-#       - cleanup:
-#           requires: [cloudfront-update]
+      - cleanup:
+          requires: [cloudfront-update]
 
-# # VS Code Extension Version: 1.5.1
+

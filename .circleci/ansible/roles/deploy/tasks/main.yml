@@ -28,4 +28,3 @@
       pm2 start npm -- start
 
 
-# VS Code Extension Version: 1.5.1
