@@ -5,6 +5,14 @@ orbs:
   ansible_upload: orbss/ansible_upload@0.2.8
 
 commands:
+
+  failure_notifcation:
+    steps:
+      - slack/notify:
+          event: fail
+          channel: udapeople
+          template: basic_fail_1
+
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
     parameters:
@@ -74,6 +82,9 @@ jobs:
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
+      
+      - failure_notifcation
+      
       # - slack/notify:
       #     branch_pattern: master
       #     channel: C04CPS646NP
@@ -86,7 +97,7 @@ jobs:
       #     template: basic_fail_1
 
   build-backend:
-    docker:
+   docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
@@ -102,6 +113,8 @@ jobs:
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
+      
+      - failure_notifcation
       # - slack/notify:
       #     branch_pattern: master
       #     channel: C04CPS646NP
