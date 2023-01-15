@@ -11,6 +11,5 @@ https://d2wjvizarg5mrt.cloudfront.net
 [URL04]
 http://54.173.55.193:3030/api/status
 
-[URL05]
-44.203.117.70:9090
+
 
