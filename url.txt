@@ -2,7 +2,7 @@
 https://github.com/DawitSisayy/devops-project3
 
 [URL02]
-http://udapeople-fc9e1cf.s3-website-us-east-1.amazonaws.com
+http://udapeople-f636ec7.s3-website-us-east-1.amazonaws.com/#/employees
 
 
 [URL03]
