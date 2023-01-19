@@ -2,14 +2,15 @@
 https://github.com/DawitSisayy/devops-project3
 
 [URL02]
-http://udapeople-f636ec7.s3-website-us-east-1.amazonaws.com/#/employees
+http://udapeople-2bb7f68.s3-website-us-east-1.amazonaws.com/#/employees
 
 
 [URL03]
-https://d2wjvizarg5mrt.cloudfront.net
+https://d1w6nt7ye50fwv.cloudfront.net
+
 
 [URL04]
-http://54.173.55.193:3030/api/status
+http://54.159.200.127:3030/api/status
 
 
 
