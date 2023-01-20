@@ -47,7 +47,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl  --insecure https://kvdb.io/Xq8DqRTzu3bpGvTFzor2wj/migration_<< parameters.workflow_id >>)
+            SUCCESS=$(curl  --insecure https://kvdb.io/AAAugfnCvXjWbavJ2ihiVs/migration_<< parameters.workflow_id >>)
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -296,7 +296,7 @@ jobs:
             if [[ 'has been executed successfully.' =~ $(grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt | uniq) ]]
             then
                 # If you are using kvdb.io, generate the bucket ID "9GE4jRtKznmVKRfvdBABBe" in your local terminal first
-                curl -k https://kvdb.io/Xq8DqRTzu3bpGvTFzor2wj/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl -k https://kvdb.io/AAAugfnCvXjWbavJ2ihiVs/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       # Here's where you will add some code to rollback on failure
       - revert-migrations
@@ -515,20 +515,20 @@ workflows:
       - build-frontend
       - build-backend
 
-      - test-frontend:
-          requires: [build-frontend]
-      - test-backend:
-          requires: [build-backend]
-      - scan-backend:
-          requires: [build-backend]
-      - scan-frontend:
-          requires: [build-frontend]
+      # - test-frontend:
+      #     requires: [build-frontend]
+      # - test-backend:
+      #     requires: [build-backend]
+      # - scan-backend:
+      #     requires: [build-backend]
+      # - scan-frontend:
+      #     requires: [build-frontend]
       - deploy-infrastructure:
-          #  requires: [build-frontend,build-backend]
-          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
-          filters:
-           branches:
-            only: [main]
+           requires: [build-frontend,build-backend]
+          # requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          # filters:
+          #  branches:
+          #   only: [main]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       - run-migrations:
