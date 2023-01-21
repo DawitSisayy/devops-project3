@@ -11,6 +11,12 @@ http://d2vgw8bhvldkmd.cloudfront.net/#/employees
 [URL04]
 
 http://3.89.36.177:3030/api/status
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 70fa77310b456774b324c63c92717b7579f590dd
 
 
  
